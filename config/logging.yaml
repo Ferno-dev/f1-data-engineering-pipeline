@@ -1,0 +1,36 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  standard:
+    format: '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: standard
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: standard
+    filename: 'logs/f1_pipeline.log'
+
+loggers:
+  src.ingestion:
+    level: DEBUG
+    handlers: [console, file]
+
+  src.storage:
+    level: DEBUG
+    handlers: [console, file]
+
+  orchestration:
+    level: DEBUG
+    handlers: [console, file]
+
+root:
+  level: INFO
+  handlers: [console, file]

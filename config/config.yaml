@@ -1,0 +1,20 @@
+api:
+  base_url: "https://api.openf1.org/v1"
+  timeout_seconds: 30
+  max_retries: 5
+  backoff_factor: 1
+
+storage:
+  output_directory: "data/raw"
+  format: "parquet"
+
+incremental:
+  state_path: "data/state/watermarks.json"
+  drivers:
+    base_params:
+      session_key: "latest"
+  laps:
+    timestamp_field: "date_start"
+    timestamp_param: "date_start>"
+    base_params:
+      session_key: "latest"
