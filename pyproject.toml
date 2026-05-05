@@ -25,3 +25,8 @@ directory_type = "project"
 
 [tool.dg.project]
 root_module = "f1_data_pipeline"
+
+[tool.ruff]
+exclude = [
+    "**/._*",
+]
